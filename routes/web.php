@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,3 +23,7 @@ Route::get('/salam/{nama}', function ($nama) {
 });
 
 Route::get('admin/dashboard', [DashboardController::class, 'index']);
+// Route menampilkan student
+Route::get('admin/student', [StudentController::class, 'index']);
+// Route menampilkan student
+Route::get('admin/course', [CourseController::class, 'index']);
