@@ -23,15 +23,19 @@
                     <th>NIM</th>
                     <th>Class</th>
                     <th>Major</th>
+                    <th>Course</th>
                     <th>Action</th>
                 </tr>
                 @foreach ($students as $student)
+                
+
                 <tr>
-                    <td>1</td>
+                    <td>{{$student->id}}</td>
                     <td>{{$student->name}}</td>
                     <td>{{$student->nim}}</td>
                     <td>{{$student->class}}</td>
                     <td>{{$student->major}}</td>
+                    <td>{{$student->course->name ?? 'Belum mengikuti course'}}</td>
                     <td class="d-flex">
                         <a href="/admin/student/edit/{{ $student ->id}}" class="btn btn-warning me-2">Edit</a>
                         <form action="/admin/student/delete/{{ $student->id }}" method="post">
