@@ -36,20 +36,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Route menampilkan student
-    Route::get('admin/student', [StudentController::class, 'index']);
-    // Route menampilkan student
-    Route::get('admin/course', [CourseController::class, 'index']);
+    Route::get('admin/student', [StudentController::class, 'index'])->middleware('admin');
+    
     // CRUD Student
     // Route untuk menampilkan form tambah student
-    Route::get('admin/student/create', [StudentController::class, 'create']);
+    Route::get('admin/student/create', [StudentController::class, 'create'])->middleware('admin');
     // Route untuk mnegirim data student
-    Route::post('/admin/student/store', [StudentController::class, 'store']);
+    Route::post('/admin/student/store', [StudentController::class, 'store'])->middleware('admin');
     //  Route untuk edit menampilkan halaman student
-    Route::get('admin/student/edit/{id}', [StudentController::class, 'edit']);
+    Route::get('admin/student/edit/{id}', [StudentController::class, 'edit'])->middleware('admin');
     // Menyimpan hasil update student
-    Route::put('admin/student/update/{id}', [StudentController::class, 'update']);
+    Route::put('admin/student/update/{id}', [StudentController::class, 'update'])->middleware('admin');
     // Route untuk menghapus student
-    Route::delete('admin/student/delete/{id}', [StudentController::class, 'destroy']);
+    Route::delete('admin/student/delete/{id}', [StudentController::class, 'destroy'])->middleware('admin');
+    
+    // Route menampilkan course
+    Route::get('admin/course', [CourseController::class, 'index']);
     // CRUD Course
     // Route untuk menampilkan form tambah 
     Route::get('admin/course/create', [CourseController::class, 'create']);
